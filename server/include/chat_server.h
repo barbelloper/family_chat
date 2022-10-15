@@ -11,6 +11,7 @@
 
 #define PORT 8080 
 #define PACKET_SIZE 1024
+#define MAXLINE  511
 
 class ChatServer
 {
@@ -29,12 +30,15 @@ private:
     struct sockaddr_in server_addr;
     std::vector<pii> client_info;
     bool is_open_socket;
+    std::thread cm_listener;
 public:
     ChatServer(/* args */);
     ~ChatServer(); 
     int openSocket();
     int readyServer();
-    void messageReceiveThreadWorker();
+    static void messageReceiveThreadWorker();
+    void executeCommandListener();
+    void joinCommandListener();
 };
 
 ChatServer::ChatServer(/* args */)
