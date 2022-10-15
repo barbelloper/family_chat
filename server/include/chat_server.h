@@ -1,9 +1,9 @@
 #ifndef CHAT_SERVER_
 #define CHAT_SERVER_
-#include <iostream> // c++ stadard input output
-#include <vector> //vector
-#include <utility> //pair
-#include <thread> //thread
+#include <iostream> 
+#include <vector> 
+#include <utility> 
+#include <thread> 
 #include <cstdlib>
 #include <sys/socket.h>
 #include <netinet/in.h>
