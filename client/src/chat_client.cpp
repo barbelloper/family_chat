@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 			if ((nbyte = recv(sock, bufmsg, MAXLINE, 0)) > 0) 
             {
 				bufmsg[nbyte] = 0;
-				write(1, "\033[0G", 4);		//커서의 X좌표를 0으로 이동
+				write(1, "\033[0G", 4);
 				printf("%s", bufmsg);
 				fprintf(stderr, "\033[1;32m");
 				fprintf(stderr, "%s>", argv[3]);
@@ -103,18 +103,18 @@ int main(int argc, char *argv[])
         {
 			if (fgets(bufmsg, MAXLINE, stdin)) 
             {
-				fprintf(stderr, "\033[1;33m"); //글자색을 노란색으로 변경
-				fprintf(stderr, "\033[1A"); //Y좌표를 현재 위치로부터 -1만큼 이동
-				ct = time(NULL);	//현재 시간을 받아옴
+				fprintf(stderr, "\033[1;33m");
+				fprintf(stderr, "\033[1A");
+				ct = time(NULL);
 				tm = *localtime(&ct);
 				sprintf(bufall, "[%02d:%02d:%02d]%s>%s", tm.tm_hour, tm.tm_min, tm.tm_sec, argv[3], bufmsg); //메시지에 현재시간 추가
 				if (send(sock, bufall, strlen(bufall), 0) < 0)
                 {
-					puts("Error : Write error on socket.");
+					printf("Error : Write error on socket.");
                 }
 				if (strstr(bufmsg, "exit") != NULL) 
                 {
-					puts("Good bye.");
+					printf("Good bye.");
 					close(sock);
 					exit(0);
 				}

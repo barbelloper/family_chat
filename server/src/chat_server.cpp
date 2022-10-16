@@ -169,15 +169,15 @@ void ChatServer::broadcastToAllClient()
 	}
 }
 
-void ChatServer::removeClient(socket_t socket) 
+void ChatServer::removeClient(int user_id) 
 {
     time_t ct;
     struct tm tm;
-	close(clisock_list[socket]);
-	if (socket != num_user - 1) 
+	close(clisock_list[user_id]);
+	if (user_id != num_user - 1) 
     {
-		clisock_list[socket] = clisock_list[num_user - 1];
-		strcpy(ip_list[socket], ip_list[num_user - 1]);
+		clisock_list[user_id] = clisock_list[num_user - 1];
+		strcpy(ip_list[user_id], ip_list[num_user - 1]);
 	}
 	num_user--; 
 	ct = time(NULL);

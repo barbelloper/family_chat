@@ -13,7 +13,6 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define PORT 8080 
 #define MAXSOCKET 1024
 #define PACKET_SIZE 1024
 #define MAXLINE  511
